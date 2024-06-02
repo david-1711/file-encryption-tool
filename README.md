@@ -2,7 +2,17 @@
 
 ## Overview
 
-[securefile.sh](securefile.sh) is a Bash script that leverages Argon2id to create complex hash value of entered password and OpenSSL to encrypt and decrypt the selected file by using the calculated hash. This way we create quite complex password for encryption and decryption. The hash value generated varies depending on the Argon settings. Consequently, it's essential to employ identical settings for both encryption and decryption processes.
+The [securefile.sh](securefile.sh) is a Bash script designed to encrypt and decrypt individual files containing sensitive data. It utilizes Argon2id to generate a complex encryption password (hash) from a user-provided password (master key), making the password highly resistant to brute-force attacks. The hash value generated varies depending on the Argon settings. Consequently, it's essential to employ identical settings for both encryption and decryption processes. Argon2id is the winner of the Password Hashing Competition and is designed to be computationally intensive and memory-hard, providing robust protection against both offline and parallel brute-force attacks.
+
+By using Argon2id, the script ensures that even if an attacker attempts to brute-force the master key, the process is significantly slower compared to directly using the master key for encryption. This added layer of security comes from Argon2id's configurable settings, such as iterations, memory usage, and parallelism, which can be adjusted to increase the difficulty of brute-force attempts.
+
+Other benefits of using Argon2id include:
+
+- **Adaptive Resistance:** Argon2id's settings can be fine-tuned to adapt to advancements in hardware, maintaining strong security over time.
+- **Memory-Hard Function:** Argon2id requires a significant amount of memory, making it difficult for attackers to use specialized hardware like GPUs and ASICs to speed up brute-force attacks.
+- **Parallel Processing:** The algorithm's parallelism allows it to leverage multiple CPU cores, enhancing performance while maintaining security.
+
+In summary, [securefile.sh](securefile.sh) encrypts files with a strong encryption algorithm (AES-256-CBC via OpenSSL) and ensures that the derived encryption key is highly secure, thanks to Argon2id. This makes it an great tool for protecting sensitive data with state-of-the-art cryptographic practices.
 
 ## Features
 
