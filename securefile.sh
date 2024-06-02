@@ -58,9 +58,10 @@ read -r -s -p "Enter salt: " SALT
 echo ""
 
 # Default Argon settings
+## see OWASP recomendadions: https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html)
 DEFAULT_ITER=20
-DEFAULT_MEM_USG=10000 # KiB
-DEFAULT_THREADS=5
+DEFAULT_MEM_USG=100000 # KiB
+DEFAULT_THREADS=4
 DEFAULT_HASH_LENGHT=64
 
 # Prompt for Argon settings
